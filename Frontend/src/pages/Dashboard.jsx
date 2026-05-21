@@ -30,10 +30,9 @@ function Dashboard() {
   return (
     <div className="p-5">
 
-      <h1 className="text-3xl font-bold mb-5">
-        Dashboard
-      </h1>
-
+     <h1 className="text-white text-4xl font-bold mb-6">
+  Dashboard
+</h1>
       <div className="grid grid-cols-3 gap-5">
 
         <div className="bg-white shadow p-5 rounded">

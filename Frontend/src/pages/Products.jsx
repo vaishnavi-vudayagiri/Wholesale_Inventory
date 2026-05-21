@@ -75,12 +75,12 @@ function Products() {
 
   return (
     <div className="p-5">
-      <h1 className="text-3xl font-bold mb-5">
+      <h1  className="text-white text-4xl font-bold mb-6">
         Products
       </h1>
 
       {/* FORM */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5 text-white">
         <input
           type="text"
           name="name"

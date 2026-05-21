@@ -23,7 +23,7 @@ function ProtectedLayout({ children }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#0a0f1c] flex flex-col">
       <Header />
 
       <div className="flex flex-1">
