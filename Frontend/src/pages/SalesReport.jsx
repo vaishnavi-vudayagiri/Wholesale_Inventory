@@ -6,7 +6,7 @@ function SalesReport() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/reports/sales")
+      .get("https://wholesale-inventory.onrender.com/api/reports/sales")
       .then((res) => {
         console.log(res.data);
         setSales(res.data);

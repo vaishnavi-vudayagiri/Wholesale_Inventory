@@ -14,7 +14,7 @@ function Customers() {
   const fetchCustomers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/customers"
+        "https://wholesale-inventory.onrender.com/api/customers"
       );
       setCustomers(res.data);
     } catch (err) {
@@ -38,7 +38,7 @@ function Customers() {
   const addCustomer = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/customers",
+        "https://wholesale-inventory.onrender.com/api/customers",
         formData
       );
 
@@ -61,7 +61,7 @@ function Customers() {
   const deleteCustomer = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/customers/${id}`
+        `https://wholesale-inventory.onrender.com/api/customers/${id}`
       );
       fetchCustomers();
     } catch (err) {

@@ -8,7 +8,7 @@ function Dashboard() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/api/products")
+      .get("https://wholesale-inventory.onrender.com/api/products")
       .then((res) => {
         setProducts(res.data);
       });
