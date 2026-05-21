@@ -5,7 +5,6 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Customers from "./pages/Customers";
@@ -15,25 +14,34 @@ import StockReport from "./pages/StockReport";
 import LowStock from "./pages/LowStock";
 import EditProduct from "./pages/EditProduct";
 
+// Protected Layout
 function ProtectedLayout({ children }) {
   const isLoggedIn = localStorage.getItem("login");
 
-  if (!isLoggedIn) {
+  // If not logged in redirect to login
+  if (isLoggedIn !== "true") {
     return <Navigate to="/" />;
   }
 
   return (
     <div className="min-h-screen bg-[#0a0f1c] flex flex-col">
+      {/* Header */}
       <Header />
 
+      {/* Main Layout */}
       <div className="flex flex-1">
+
+        {/* Sidebar */}
         <Sidebar />
 
-        <main className="flex-1 p-8">
+        {/* Page Content */}
+        <main className="flex-1 p-8 overflow-y-auto">
           {children}
         </main>
+
       </div>
 
+      {/* Footer */}
       <Footer />
     </div>
   );
@@ -46,7 +54,7 @@ function App() {
       {/* LOGIN PAGE */}
       <Route path="/" element={<Login />} />
 
-      {/* PROTECTED ROUTES */}
+      {/* DASHBOARD */}
       <Route
         path="/dashboard"
         element={
@@ -56,6 +64,7 @@ function App() {
         }
       />
 
+      {/* PRODUCTS */}
       <Route
         path="/products"
         element={
@@ -65,6 +74,7 @@ function App() {
         }
       />
 
+      {/* CUSTOMERS */}
       <Route
         path="/customers"
         element={
@@ -74,6 +84,7 @@ function App() {
         }
       />
 
+      {/* BILLING */}
       <Route
         path="/billing"
         element={
@@ -83,6 +94,7 @@ function App() {
         }
       />
 
+      {/* SALES REPORT */}
       <Route
         path="/sales-report"
         element={
@@ -92,6 +104,7 @@ function App() {
         }
       />
 
+      {/* STOCK REPORT */}
       <Route
         path="/stock-report"
         element={
@@ -101,6 +114,7 @@ function App() {
         }
       />
 
+      {/* LOW STOCK */}
       <Route
         path="/low-stock"
         element={
@@ -110,6 +124,7 @@ function App() {
         }
       />
 
+      {/* EDIT PRODUCT */}
       <Route
         path="/edit-product/:id"
         element={
@@ -118,7 +133,13 @@ function App() {
           </ProtectedLayout>
         }
       />
-       <Route path="/logout" element={<Logout />} />
+
+      {/* INVALID ROUTE */}
+      <Route
+        path="*"
+        element={<Navigate to="/" />}
+      />
+
     </Routes>
   );
 }

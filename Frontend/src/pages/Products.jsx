@@ -128,7 +128,7 @@ function Products() {
 
         <button
           onClick={addProduct}
-          className="bg-green-600 text-white px-4 py-2 rounded"
+          className="bg-blue-800 text-white px-4 py-2 rounded"
         >
           Add Product
         </button>
@@ -136,7 +136,7 @@ function Products() {
 
       {/* TABLE */}
       <table className="w-full border">
-        <thead className="bg-blue-600 text-white">
+        <thead className="bg-blue-800 text-white">
           <tr>
             <th className="p-2">Name</th>
             <th className="p-2">Category</th>
@@ -167,7 +167,7 @@ function Products() {
                   onClick={() =>
                     deleteProduct(product._id)
                   }
-                  className="bg-red-500 text-white px-3 py-1 rounded"
+                  className="bg-blue-800 text-white px-3 py-1 rounded"
                 >
                   Delete
                 </button>
