@@ -15,9 +15,9 @@ import LowStock from "./pages/LowStock";
 import EditProduct from "./pages/EditProduct";
 
 
-// ===============================
+
 // TOKEN HELPER (IMPORTANT)
-// ===============================
+
 function getToken() {
   const token = localStorage.getItem("token");
 
@@ -29,9 +29,9 @@ function getToken() {
 }
 
 
-// ===============================
+
 // PROTECTED LAYOUT
-// ===============================
+
 function ProtectedLayout({ children }) {
   const token = getToken();
 
@@ -53,9 +53,9 @@ function ProtectedLayout({ children }) {
 }
 
 
-// ===============================
+
 // APP ROUTES
-// ===============================
+
 function App() {
   const token = getToken();
 

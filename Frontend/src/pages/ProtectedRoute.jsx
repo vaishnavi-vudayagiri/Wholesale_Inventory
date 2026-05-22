@@ -4,10 +4,7 @@ const router = express.Router();
 const Product = require("../models/Product");
 
 
-
-/* ==================================================
-   GET ALL PRODUCTS
-================================================== */
+/*  GET ALL PRODUCTS*/
 router.get("/", async (req, res) => {
 
   try {
@@ -35,9 +32,9 @@ router.get("/", async (req, res) => {
 
 
 
-/* ==================================================
+/* 
    GET SINGLE PRODUCT
-================================================== */
+ */
 router.get("/:id", async (req, res) => {
 
   try {
@@ -72,9 +69,7 @@ router.get("/:id", async (req, res) => {
 
 
 
-/* ==================================================
-   ADD PRODUCT
-================================================== */
+/*ADD PRODUCT*/
 router.post("/", async (req, res) => {
 
   try {

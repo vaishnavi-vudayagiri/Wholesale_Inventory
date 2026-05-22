@@ -5,7 +5,7 @@ function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.clear(); // 🔥 BEST (clear everything)
+    localStorage.clear(); 
 
     navigate("/login", { replace: true });
   }, [navigate]);

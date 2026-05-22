@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* =========================
-   WARM CLASSY THEME
-========================= */
+
+  /*WARM CLASSY THEME*/
+
 :root {
   --primary: #F59E0B;      /* amber */
   --secondary: #FB923C;    /* soft orange */
@@ -16,9 +16,7 @@
   --border: #FDE68A;
 }
 
-/* =========================
-   GLOBAL STYLES
-========================= */
+/*GLOBAL STYLES */
 body {
   margin: 0;
   padding: 0;
@@ -27,9 +25,7 @@ body {
   color: var(--text);
 }
 
-/* =========================
-   INPUTS
-========================= */
+/* INPUTS*/
 input,
 select,
 textarea {
@@ -50,9 +46,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
 }
 
-/* =========================
-   TABLE
-========================= */
+/* TABLE */
 table {
   background: white;
   border-radius: 14px;
@@ -67,9 +61,7 @@ th, td {
   border-bottom: 1px solid #FDE68A;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 button {
   background: var(--button);
   color: white;
@@ -84,9 +76,7 @@ button:hover {
   transform: translateY(-1px);
 }
 
-/* =========================
-   LINKS (optional polish)
-========================= */
+/*LINKS (optional polish) */
 a {
   transition: 0.2s ease;
 }
