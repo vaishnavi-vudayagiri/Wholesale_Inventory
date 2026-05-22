@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Customers from "./pages/Customers";
@@ -13,6 +14,7 @@ import SalesReport from "./pages/SalesReport";
 import StockReport from "./pages/StockReport";
 import LowStock from "./pages/LowStock";
 import EditProduct from "./pages/EditProduct";
+
 
 // Protected Layout
 function ProtectedLayout({ children }) {
@@ -25,6 +27,7 @@ function ProtectedLayout({ children }) {
 
   return (
     <div className="min-h-screen bg-[#0a0f1c] flex flex-col">
+
       {/* Header */}
       <Header />
 
@@ -43,9 +46,11 @@ function ProtectedLayout({ children }) {
 
       {/* Footer */}
       <Footer />
+
     </div>
   );
 }
+
 
 function App() {
   return (
@@ -53,6 +58,9 @@ function App() {
 
       {/* LOGIN PAGE */}
       <Route path="/" element={<Login />} />
+
+      {/* REGISTER PAGE */}
+      <Route path="/register" element={<Register />} />
 
       {/* DASHBOARD */}
       <Route

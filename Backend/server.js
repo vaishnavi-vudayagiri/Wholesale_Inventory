@@ -6,11 +6,13 @@ const connectDB = require("./db");
 // Load environment variables
 dotenv.config();
 
-// Connect to MongoDB
+console.log(process.env.JWT_SECRET);
+// Connect MongoDB
 connectDB();
 
-// Create Express app
+// Create Express App
 const app = express();
+
 
 // Middleware
 app.use(cors());
@@ -20,9 +22,11 @@ app.use(express.json());
 // Test Route
 app.get("/", (req, res) => {
   res.json({
+    success: true,
     message: "Wholesale Inventory & Billing Backend Running",
   });
 });
+
 
 // API Routes
 app.use("/api/auth", require("./API/auth"));
@@ -32,6 +36,7 @@ app.use("/api/billing", require("./API/billing"));
 app.use("/api/dashboard", require("./API/dashboard"));
 app.use("/api/reports", require("./API/reports"));
 
+
 // Handle Unknown Routes
 app.use((req, res) => {
   res.status(404).json({
@@ -39,6 +44,7 @@ app.use((req, res) => {
     message: "Route Not Found",
   });
 });
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;
