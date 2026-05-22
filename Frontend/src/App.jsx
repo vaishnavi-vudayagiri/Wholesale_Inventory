@@ -1,9 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -16,50 +15,69 @@ import LowStock from "./pages/LowStock";
 import EditProduct from "./pages/EditProduct";
 
 
-// Protected Layout
-function ProtectedLayout({ children }) {
-  const isLoggedIn = localStorage.getItem("login");
+// ===============================
+// TOKEN HELPER (IMPORTANT)
+// ===============================
+function getToken() {
+  const token = localStorage.getItem("token");
 
-  // If not logged in redirect to login
-  if (isLoggedIn !== "true") {
-    return <Navigate to="/" />;
+  if (!token || token === "undefined" || token === "null") {
+    return null;
+  }
+
+  return token;
+}
+
+
+// ===============================
+// PROTECTED LAYOUT
+// ===============================
+function ProtectedLayout({ children }) {
+  const token = getToken();
+
+  if (!token) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+
+    return <Navigate to="/login" replace />;
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0f1c] flex flex-col">
-
-      {/* Header */}
-      <Header />
-
-      {/* Main Layout */}
-      <div className="flex flex-1">
-
-        {/* Sidebar */}
-        <Sidebar />
-
-        {/* Page Content */}
-        <main className="flex-1 p-8 overflow-y-auto">
-          {children}
-        </main>
-
-      </div>
-
-      {/* Footer */}
-      <Footer />
-
+    <div className="min-h-screen bg-slate-100 flex">
+      <Sidebar />
+      <main className="flex-1 p-8 overflow-y-auto">
+        {children}
+      </main>
     </div>
   );
 }
 
 
+// ===============================
+// APP ROUTES
+// ===============================
 function App() {
+  const token = getToken();
+
   return (
     <Routes>
 
-      {/* LOGIN PAGE */}
-      <Route path="/" element={<Login />} />
+      {/* HOME */}
+      <Route path="/" element={<Home />} />
 
-      {/* REGISTER PAGE */}
+      {/* LOGIN */}
+      <Route
+  path="/login"
+  element={
+    getToken() ? (
+      <Navigate to="/dashboard" replace />
+    ) : (
+      <Login />
+    )
+  }
+/>
+
+      {/* REGISTER */}
       <Route path="/register" element={<Register />} />
 
       {/* DASHBOARD */}
@@ -142,11 +160,8 @@ function App() {
         }
       />
 
-      {/* INVALID ROUTE */}
-      <Route
-        path="*"
-        element={<Navigate to="/" />}
-      />
+      {/* FALLBACK */}
+      <Route path="*" element={<Navigate to="/" replace />} />
 
     </Routes>
   );

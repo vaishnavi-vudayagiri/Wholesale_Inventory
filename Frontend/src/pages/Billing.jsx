@@ -42,11 +42,11 @@ function Billing() {
 
   return (
     <div className="p-5">
-      <h1  className="text-white text-4xl font-bold mb-6">
+      <h1  className="text-black text-4xl font-bold mb-6">
         Billing
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-white">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-black">
         <input
           type="text"
           name="customerName"

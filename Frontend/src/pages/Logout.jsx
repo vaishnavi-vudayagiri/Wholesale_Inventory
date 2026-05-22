@@ -5,11 +5,10 @@ function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.removeItem("login");
-    localStorage.removeItem("username");
+    localStorage.clear(); // 🔥 BEST (clear everything)
 
-    navigate("/");
-  }, []);
+    navigate("/login", { replace: true });
+  }, [navigate]);
 
   return null;
 }

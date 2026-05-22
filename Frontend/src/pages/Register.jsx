@@ -49,7 +49,7 @@ function Register() {
 
       // API Call
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://wholesale-inventory.onrender.com/api/auth/register",
         formData
       );
 

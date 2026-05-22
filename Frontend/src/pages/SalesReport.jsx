@@ -16,7 +16,7 @@ function SalesReport() {
 
   return (
     <div className="p-5">
-      <h1  className="text-white text-4xl font-bold mb-6">
+      <h1  className="text-black text-4xl font-bold mb-6">
         Sales Report
       </h1>
 
