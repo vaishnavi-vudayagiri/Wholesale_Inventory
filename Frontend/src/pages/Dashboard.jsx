@@ -2,17 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Dashboard() {
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-
     axios
       .get("https://wholesale-inventory.onrender.com/api/products")
       .then((res) => {
         setProducts(res.data);
       });
-
   }, []);
 
   const totalProducts = products.length;
@@ -28,35 +25,53 @@ function Dashboard() {
   );
 
   return (
-    <div className="p-5">
+    <div className="p-6 md:p-10 bg-[#FFFBF5] min-h-screen">
 
-     <h1 className="text-black text-4xl font-bold mb-6">
-  Dashboard
-</h1>
-      <div className="grid grid-cols-3 gap-5">
+      {/* TITLE */}
+      <h1 className="text-3xl md:text-4xl font-bold text-[#1C1917] mb-8">
+        Dashboard Overview
+      </h1>
 
-        <div className="bg-white shadow p-5 rounded">
-          <h2>Total Products</h2>
+      {/* CARDS GRID */}
+      <div className="grid md:grid-cols-3 gap-6">
 
-          <p className="text-3xl font-bold">
+        {/* CARD 1 */}
+        <div className="bg-[#FFF7ED] border border-amber-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+
+          <h2 className="text-stone-600 font-medium">
+            Total Products
+          </h2>
+
+          <p className="text-3xl font-bold text-amber-600 mt-3">
             {totalProducts}
           </p>
+
         </div>
 
-        <div className="bg-white shadow p-5 rounded">
-          <h2>Total Stock</h2>
+        {/* CARD 2 */}
+        <div className="bg-[#FFF7ED] border border-amber-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
 
-          <p className="text-3xl font-bold">
+          <h2 className="text-stone-600 font-medium">
+            Total Stock
+          </h2>
+
+          <p className="text-3xl font-bold text-amber-600 mt-3">
             {totalStock}
           </p>
+
         </div>
 
-        <div className="bg-white shadow p-5 rounded">
-          <h2>Total Inventory Value</h2>
+        {/* CARD 3 */}
+        <div className="bg-[#FFF7ED] border border-amber-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
 
-          <p className="text-3xl font-bold">
+          <h2 className="text-stone-600 font-medium">
+            Total Inventory Value
+          </h2>
+
+          <p className="text-3xl font-bold text-amber-600 mt-3">
             ₹{totalValue}
           </p>
+
         </div>
 
       </div>

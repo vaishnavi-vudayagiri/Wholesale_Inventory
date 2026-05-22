@@ -1,58 +1,50 @@
 import { Link } from "react-router-dom";
-import { Package } from "lucide-react";
 
 function Header() {
-
   return (
-    <header className="bg-white shadow-md px-8 py-4 flex items-center justify-between">
+    <header className="bg-[#FFFBF5] border-b border-amber-100 shadow-sm px-6 md:px-10 py-4 flex justify-between items-center">
 
-      {/* Logo */}
-      <div className="flex items-center gap-3">
+      {/* LOGO SECTION */}
+      <div className="flex flex-col">
+        <h1 className="text-xl md:text-2xl font-bold text-[#1C1917] tracking-tight">
+          Wholesale Inventory
+        </h1>
 
-        <div className="bg-indigo-600 text-white p-2 rounded-xl">
-          <Package size={28} />
-        </div>
-
-        <div>
-          <h1 className="text-2xl font-bold text-gray-800">
-            Wholesale Inventory
-          </h1>
-
-          <p className="text-sm text-gray-500">
-            Inventory & Billing System
-          </p>
-        </div>
-
+        <p className="text-xs md:text-sm text-stone-500">
+          Inventory Management System
+        </p>
       </div>
 
-
-
-      {/* Navigation */}
-      <nav className="flex items-center gap-6">
+      {/* NAVIGATION */}
+      <nav className="flex items-center gap-3 md:gap-6 text-sm font-medium">
 
         <Link
           to="/"
-          className="text-gray-700 hover:text-indigo-600 font-medium transition"
+          className="text-stone-600 hover:text-amber-600 transition duration-200"
         >
           Home
         </Link>
 
         <Link
-          to="/"
-          className="text-gray-700 hover:text-indigo-600 font-medium transition"
+          to="/login"
+          className="text-stone-600 hover:text-amber-600 transition duration-200"
         >
           Login
         </Link>
 
         <Link
           to="/register"
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg transition"
+          className="
+            bg-amber-500 hover:bg-amber-600
+            text-white px-4 py-2 rounded-lg
+            shadow-sm hover:shadow-md
+            transition duration-200
+          "
         >
           Register
         </Link>
 
       </nav>
-
     </header>
   );
 }

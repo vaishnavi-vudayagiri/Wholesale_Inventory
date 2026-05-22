@@ -21,7 +21,7 @@ function StockReport() {
       </h1>
 
       <table className="w-full border">
-        <thead className="bg-blue-600 text-white">
+        <thead className="bg-amber-600 text-white">
           <tr>
             <th className="p-2">Product</th>
             <th className="p-2">Category</th>

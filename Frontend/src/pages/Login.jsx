@@ -9,19 +9,15 @@ import Footer from "../components/Footer";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
   const navigate = useNavigate();
 
-  /* =========================================
-     CHECK LOGIN STATUS
-  ========================================= */
+  /* CHECK AUTH */
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    // FIX: prevent fake/empty tokens from auto-login
     if (token && token !== "undefined" && token !== "null") {
       navigate("/dashboard");
     }
@@ -29,9 +25,7 @@ function Login() {
     setCheckingAuth(false);
   }, [navigate]);
 
-  /* =========================================
-     HANDLE LOGIN
-  ========================================= */
+  /* LOGIN */
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -56,29 +50,22 @@ function Login() {
 
       const { token, user } = response.data;
 
-      // Store auth data
       localStorage.setItem("token", token);
       localStorage.setItem("username", user?.name || "");
 
-      alert("Login Successful");
-
       navigate("/dashboard");
+
     } catch (error) {
-      alert(
-        error.response?.data?.message || "Login Failed"
-      );
+      alert(error.response?.data?.message || "Login Failed");
     } finally {
       setLoading(false);
     }
   };
 
-  /* =========================================
-     LOADING SCREEN
-  ========================================= */
   if (checkingAuth) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-100">
-        <h1 className="text-3xl font-bold text-indigo-600">
+      <div className="min-h-screen flex items-center justify-center bg-[#FFFBF5]">
+        <h1 className="text-2xl font-bold text-amber-500 animate-pulse">
           Loading...
         </h1>
       </div>
@@ -86,61 +73,72 @@ function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#FFFBF5] flex flex-col">
+
       <Header />
 
-      <div className="flex-1 flex items-center justify-center px-4 py-10">
-        <div className="grid md:grid-cols-2 bg-white rounded-3xl shadow-2xl overflow-hidden max-w-6xl w-full">
+      <div className="flex-1 flex items-center justify-center px-4 py-12">
+
+        <div className="grid md:grid-cols-2 bg-white border border-amber-100 rounded-3xl shadow-xl overflow-hidden max-w-6xl w-full">
 
           {/* LEFT SIDE */}
-          <div className="hidden md:flex flex-col justify-center bg-gradient-to-br from-indigo-600 to-blue-700 text-white p-12">
+          <div className="hidden md:flex flex-col justify-center bg-gradient-to-br from-amber-500 to-orange-500 text-white p-12">
+
             <Package size={60} />
+
             <h1 className="text-5xl font-bold mt-6">
               Wholesale Inventory
             </h1>
-            <p className="mt-5 text-blue-100 text-lg leading-8">
-              Manage inventory, customers, billing and reports with a modern business solution.
+
+            <p className="mt-5 text-amber-100 text-lg leading-8">
+              Manage inventory, customers, billing and reports with a
+              warm modern business system.
             </p>
+
           </div>
 
           {/* RIGHT SIDE */}
           <div className="p-10 flex flex-col justify-center">
-            <h2 className="text-4xl font-bold text-gray-800 mb-2">
+
+            <h2 className="text-4xl font-bold text-[#834e2b]">
               Welcome Back
             </h2>
 
-            <p className="text-gray-500 mb-8">
+            <p className="text-stone-500 mt-2 mb-8">
               Login to continue to your dashboard
             </p>
 
             <form onSubmit={handleLogin} className="space-y-5">
+
               {/* EMAIL */}
               <div className="relative">
                 <Mail
-                  className="absolute left-4 top-4 text-gray-400"
+                  className="absolute left-4 top-4 text-amber-500"
                   size={20}
                 />
+
                 <input
                   type="email"
                   placeholder="Enter Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full pl-12 p-4 border border-amber-100 rounded-xl bg-[#FFF7ED] focus:ring-2 focus:ring-amber-400 outline-none"
                 />
               </div>
 
               {/* PASSWORD */}
               <div className="relative">
                 <Lock
-                  className="absolute left-4 top-4 text-gray-400"
+                  className="absolute left-4 top-4 text-amber-500"
                   size={20}
                 />
+
                 <input
                   type="password"
                   placeholder="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full pl-12 p-4 border border-amber-100 rounded-xl bg-[#FFF7ED] focus:ring-2 focus:ring-amber-400 outline-none"
                 />
               </div>
 
@@ -148,27 +146,31 @@ function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded-xl font-semibold transition"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-white p-4 rounded-xl font-semibold shadow-sm hover:shadow-md transition"
               >
                 {loading ? "Logging in..." : "Login"}
               </button>
+
             </form>
 
             {/* REGISTER */}
-            <p className="text-center text-gray-500 mt-6">
+            <p className="text-center text-stone-500 mt-6">
               Don't have an account?{" "}
               <Link
                 to="/register"
-                className="text-indigo-600 font-semibold hover:underline"
+                className="text-amber-600 font-semibold hover:underline"
               >
                 Register
               </Link>
             </p>
+
           </div>
+
         </div>
       </div>
 
       <Footer />
+
     </div>
   );
 }

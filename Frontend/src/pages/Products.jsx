@@ -136,7 +136,7 @@ function Products() {
 
       {/* TABLE */}
       <table className="w-full border">
-        <thead className="bg-blue-800 text-white">
+        <thead className="bg-amber-600 text-white">
           <tr>
             <th className="p-2">Name</th>
             <th className="p-2">Category</th>
@@ -167,7 +167,7 @@ function Products() {
                   onClick={() =>
                     deleteProduct(product._id)
                   }
-                  className="bg-blue-800 text-white px-3 py-1 rounded"
+                  className="bg-amber-600 text-white px-3 py-1 rounded"
                 >
                   Delete
                 </button>

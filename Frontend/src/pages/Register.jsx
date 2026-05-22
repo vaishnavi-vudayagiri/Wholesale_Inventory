@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -14,164 +13,113 @@ function Register() {
 
   const [loading, setLoading] = useState(false);
 
-
-
-  // Handle Input Change
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-
   };
 
-
-
-  // Handle Register
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
-    // Validation
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.password
-    ) {
+    if (!formData.name || !formData.email || !formData.password) {
       alert("Please fill all fields");
       return;
     }
 
     try {
-
       setLoading(true);
 
-      // API Call
       const response = await axios.post(
         "https://wholesale-inventory.onrender.com/api/auth/register",
         formData
       );
 
-      // Success Message
       alert(response.data.message);
 
-      // Clear Form
       setFormData({
         name: "",
         email: "",
         password: "",
       });
 
-      // Redirect to Login
-      navigate("/");
+      navigate("/login");
 
     } catch (error) {
-
-      // Error Message
-      alert(
-        error.response?.data?.message ||
-        "Registration Failed"
-      );
-
+      alert(error.response?.data?.message || "Registration Failed");
     } finally {
-
       setLoading(false);
-
     }
   };
 
-
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0f1c] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#FFFBF5] px-4">
 
-      <div className="bg-[#111827] p-8 rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="bg-white border border-amber-100 p-10 rounded-3xl shadow-xl w-full max-w-md">
 
-        {/* Heading */}
-        <h1 className="text-3xl font-bold text-center text-white mb-2">
+        {/* HEADER */}
+        <h1 className="text-3xl font-bold text-center text-[#db5b05] mb-2">
           Create Account
         </h1>
 
-        <p className="text-gray-400 text-center mb-6">
-          Register to continue
+        <p className="text-stone-500 text-center mb-8">
+          Join the Wholesale Inventory System
         </p>
 
+        {/* FORM */}
+        <form onSubmit={handleSubmit} className="space-y-4">
 
+          {/* NAME */}
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-[#FFF7ED] border border-amber-100 outline-none focus:ring-2 focus:ring-amber-400"
+          />
 
-        {/* Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
+          {/* EMAIL */}
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-[#FFF7ED] border border-amber-100 outline-none focus:ring-2 focus:ring-amber-400"
+          />
 
-          {/* Name */}
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Name"
-              className="w-full p-3 rounded-lg bg-gray-800 text-white outline-none border border-gray-700 focus:border-blue-500"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
+          {/* PASSWORD */}
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-[#FFF7ED] border border-amber-100 outline-none focus:ring-2 focus:ring-amber-400"
+          />
 
-
-
-          {/* Email */}
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter Email"
-              className="w-full p-3 rounded-lg bg-gray-800 text-white outline-none border border-gray-700 focus:border-blue-500"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-
-
-
-          {/* Password */}
-          <div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              className="w-full p-3 rounded-lg bg-gray-800 text-white outline-none border border-gray-700 focus:border-blue-500"
-              value={formData.password}
-              onChange={handleChange}
-            />
-          </div>
-
-
-
-          {/* Button */}
+          {/* BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 transition text-white p-3 rounded-lg font-semibold"
+            className="w-full bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl font-semibold shadow-sm hover:shadow-md transition"
           >
-            {loading ? "Registering..." : "Register"}
+            {loading ? "Creating Account..." : "Register"}
           </button>
 
         </form>
 
-
-
-        {/* Login Link */}
-        <p className="text-gray-400 text-center mt-5">
-
+        {/* LOGIN LINK */}
+        <p className="text-stone-500 text-center mt-6">
           Already have an account?{" "}
-
           <Link
-            to="/"
-            className="text-blue-400 hover:underline font-semibold"
+            to="/login"
+            className="text-amber-600 font-semibold hover:underline"
           >
             Login
           </Link>
-
         </p>
 
       </div>
