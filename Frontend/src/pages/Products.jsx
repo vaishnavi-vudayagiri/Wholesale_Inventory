@@ -16,7 +16,7 @@ function Products() {
   // FETCH PRODUCTS
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("https://wholesale-inventory.onrender.com/api/products");
+      const res = await axios.get("https://wholesale-inventory-1.onrender.com/api/products");
       setProducts(res.data);
     } catch (err) {
       console.log(err);
@@ -39,7 +39,7 @@ function Products() {
   const addProduct = async () => {
     try {
       await axios.post(
-        "https://wholesale-inventory.onrender.com/api/products",
+        "https://wholesale-inventory-1.onrender.com/api/products",
         formData
       );
 
@@ -64,7 +64,7 @@ function Products() {
   const deleteProduct = async (id) => {
     try {
       await axios.delete(
-        `https://wholesale-inventory.onrender.com/api/products/${id}`
+        `https://wholesale-inventory-1.onrender.com/api/products/${id}`
       );
 
       fetchProducts();

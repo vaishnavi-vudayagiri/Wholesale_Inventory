@@ -41,7 +41,7 @@ function Login() {
       setLoading(true);
 
       const response = await axios.post(
-        "https://wholesale-inventory.onrender.com/api/auth/login",
+        "https://wholesale-inventory-1.onrender.com/api/auth/login",
         {
           email: cleanEmail,
           password: cleanPassword,

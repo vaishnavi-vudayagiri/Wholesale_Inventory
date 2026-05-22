@@ -6,7 +6,7 @@ function LowStock() {
 
   useEffect(() => {
     axios
-      .get("https://wholesale-inventory.onrender.com/api/products")
+      .get("https://wholesale-inventory-1.onrender.com/api/products")
       .then((res) => {
         setProducts(res.data);
       });

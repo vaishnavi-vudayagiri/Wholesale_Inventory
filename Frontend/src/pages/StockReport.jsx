@@ -6,7 +6,7 @@ function StockReport() {
 
   useEffect(() => {
     axios
-      .get("https://wholesale-inventory.onrender.com/api/reports/stock")
+      .get("https://wholesale-inventory-1.onrender.com/api/reports/stock")
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);

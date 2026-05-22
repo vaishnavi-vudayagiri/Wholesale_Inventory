@@ -18,7 +18,7 @@ function Billing() {
   const createBill = async () => {
     try {
       await axios.post(
-        "https://wholesale-inventory.onrender.com/api/billing",
+        "https://wholesale-inventory-1.onrender.com/api/billing",
         {
           customerName: formData.customerName,
           items: [], // add selected products later

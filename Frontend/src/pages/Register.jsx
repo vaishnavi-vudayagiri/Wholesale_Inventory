@@ -32,7 +32,7 @@ function Register() {
       setLoading(true);
 
       const response = await axios.post(
-        "https://wholesale-inventory.onrender.com/api/auth/register",
+        "https://wholesale-inventory-1.onrender.com/api/auth/register",
         formData
       );
 
