@@ -29,7 +29,7 @@ This project is designed using the **MERN Stack**:
 * View Product Stock
 * Search Products
 
-## 👥 Customer Management
+## Customer Management
 
 * Add Customers
 * Edit Customer Details
@@ -287,7 +287,7 @@ VITE_API_URL=https://wholesale-inventory.onrender.com
 
 ---
 
-# 🧪 Future Enhancements
+# Future Enhancements
 
 * Barcode Scanner Integration
 * Email Invoice Feature
